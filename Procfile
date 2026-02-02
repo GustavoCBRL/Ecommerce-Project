@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath commerce commerce.wsgi --log-file -
+web: cd commerce && gunicorn commerce.wsgi --log-file -

@@ -51,16 +51,16 @@ Aplicação Django de leilões online preparada para hospedagem no Railway.
 
 ```bash
 # Executar localmente
-python commerce/manage.py runserver
+cd commerce && python manage.py runserver
 
 # Coletar arquivos estáticos
-python commerce/manage.py collectstatic
+cd commerce && python manage.py collectstatic
 
 # Executar migrações
-python commerce/manage.py migrate
+cd commerce && python manage.py migrate
 
 # Criar superusuário
-python commerce/manage.py createsuperuser
+cd commerce && python manage.py createsuperuser
 ```
 
 ### Dependências de Produção

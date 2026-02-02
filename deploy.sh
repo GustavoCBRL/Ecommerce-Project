@@ -3,16 +3,19 @@
 # Script de deploy para Railway
 echo "🚀 Iniciando deploy..."
 
+# Navigate to commerce directory
+cd commerce
+
 # Collect static files
 echo "📦 Coletando arquivos estáticos..."
-python commerce/manage.py collectstatic --noinput
+python manage.py collectstatic --noinput
 
 # Run migrations
 echo "🗃️ Executando migrações do banco de dados..."
-python commerce/manage.py migrate --noinput
+python manage.py migrate --noinput
 
 # Create superuser if needed (opcional)
 # echo "👤 Criando superusuário (se necessário)..."
-# python commerce/manage.py createsuperuser --noinput
+# python manage.py createsuperuser --noinput
 
 echo "✅ Deploy concluído!"

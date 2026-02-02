@@ -1,1 +1,1 @@
-web: cd commerce && gunicorn commerce.wsgi --log-file -
+web: ./start.sh

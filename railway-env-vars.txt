@@ -2,9 +2,18 @@
 
 SECRET_KEY=your-secret-key-here-change-this
 DEBUG=False
-ALLOWED_HOSTS=*.railway.app
+
+# Para Railway, use * para permitir todos os hosts
+ALLOWED_HOSTS=*
+
+# Configurações do Gunicorn
+WEB_CONCURRENCY=3
+TIMEOUT=120
+WORKER_CONNECTIONS=1000
+LOG_LEVEL=info
 
 # IMPORTANTE:
 # 1. Substitua 'your-secret-key-here-change-this' por uma chave secreta forte
 # 2. O Railway configurará automaticamente DATABASE_URL quando você adicionar PostgreSQL
-# 3. Adicione outras variáveis conforme necessário para seu projeto
+# 3. O PORT é configurado automaticamente pelo Railway
+# 4. Se o erro persistir, tente definir DEBUG=True temporariamente para ver os logs

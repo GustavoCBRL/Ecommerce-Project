@@ -1,0 +1,38 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+    <ul>
+        {% for auction in auctions %}
+        <li style="border: solid 2px; max-width: 800px; padding-left: 10px; list-style-type: none;">
+            <a href="{% url 'page_auction' auction.id  %}">
+                    {% if auction.image_url %}
+                        <img src="{{ auction.image_url }}" alt="{{ auction.title }}" style="width: 200px; max-height: 200px;"><br>
+                    {% endif %}
+            
+                <ul style="list-style-type: none">
+                    <li>
+                        {{ auction.title }}
+                    </li>
+                    <li>
+                        Current Price: ${% if auction.bids.exists %}{{ auction.bids.first.value }}{% else %}{{ auction.starting_bid }}{% endif %}
+                    </li>
+                    <li>
+                        Starting Bid: ${{ auction.starting_bid }}
+                    </li>
+                    <li>
+                        {{ auction.description }}
+                    </li>
+                    <li>
+                        Created {{ auction.date }}
+                    </li>
+                    <li>
+                       <strong>Status: {{ auction.status }}</strong>
+                    </li>
+                </ul>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+ 
+{% endblock %}

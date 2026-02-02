@@ -12,10 +12,14 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent
 
 # Configure Python path to find Django apps
-# The 'auctions' app is in commerce/ directory
+# The 'auctions' app is now available in both root directory and commerce/ directory
 commerce_dir = str(BASE_DIR / 'commerce')
 if commerce_dir not in sys.path:
     sys.path.insert(0, commerce_dir)
+
+# Also add base directory for auctions app in root
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
 
 # Load environment variables
 try:
@@ -141,7 +145,8 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Additional locations of static files
 STATICFILES_DIRS = [
-    BASE_DIR / 'commerce' / 'auctions' / 'static',
+    BASE_DIR / 'auctions' / 'static',  # auctions in root directory
+    BASE_DIR / 'commerce' / 'auctions' / 'static',  # original location
 ]
 
 # Static file serving with whitenoise

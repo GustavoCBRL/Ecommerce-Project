@@ -10,7 +10,7 @@ from pathlib import Path
 # Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent
 
-# Add commerce directory to Python path
+# Configure Python path to find Django apps - same as manage.py
 commerce_dir = str(BASE_DIR / 'commerce')
 if commerce_dir not in sys.path:
     sys.path.insert(0, commerce_dir)

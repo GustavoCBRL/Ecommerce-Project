@@ -15,8 +15,8 @@ commerce_dir = str(BASE_DIR / 'commerce')
 if commerce_dir not in sys.path:
     sys.path.insert(0, commerce_dir)
 
-# Set Django settings module
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'commerce.settings')
+# Set Django settings module to root settings.py
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
 
 # Import Django WSGI application
 from django.core.wsgi import get_wsgi_application

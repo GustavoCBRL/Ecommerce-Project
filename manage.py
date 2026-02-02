@@ -10,7 +10,8 @@ def main():
     if commerce_dir not in sys.path:
         sys.path.insert(0, commerce_dir)
     
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'commerce.settings')
+    # Use settings.py from root directory for Nixpacks compatibility
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
     
     # Set WSGI_APPLICATION for Nixpacks detection
     os.environ.setdefault('WSGI_APPLICATION', 'wsgi.application')

@@ -5,8 +5,11 @@ import sys
 
 
 def main():
-    # Add commerce directory to Python path
-    commerce_dir = os.path.join(os.path.dirname(__file__), 'commerce')
+    # Configure paths BEFORE setting Django settings
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    commerce_dir = os.path.join(base_dir, 'commerce')
+    
+    # Add commerce directory to Python path so 'auctions' can be found
     if commerce_dir not in sys.path:
         sys.path.insert(0, commerce_dir)
     

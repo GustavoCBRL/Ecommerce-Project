@@ -11,7 +11,8 @@ from pathlib import Path
 # Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent
 
-# Add commerce directory to Python path for accessing auctions app
+# Configure Python path to find Django apps
+# The 'auctions' app is in commerce/ directory
 commerce_dir = str(BASE_DIR / 'commerce')
 if commerce_dir not in sys.path:
     sys.path.insert(0, commerce_dir)

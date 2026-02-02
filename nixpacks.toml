@@ -1,0 +1,6 @@
+# Railway/Nixpacks configuration
+[start]
+cmd = "python manage.py migrate --noinput && python manage.py collectstatic --noinput && gunicorn wsgi:application --bind 0.0.0.0:$PORT"
+
+[variables]
+DJANGO_SETTINGS_MODULE = "commerce.settings"

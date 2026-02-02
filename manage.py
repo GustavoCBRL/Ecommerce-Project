@@ -11,6 +11,10 @@ def main():
         sys.path.insert(0, commerce_dir)
     
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'commerce.settings')
+    
+    # Set WSGI_APPLICATION for Nixpacks detection
+    os.environ.setdefault('WSGI_APPLICATION', 'wsgi.application')
+    
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

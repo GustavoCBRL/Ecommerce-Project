@@ -1,1 +1,1 @@
-web: python manage.py collectstatic --noinput && python manage.py migrate --noinput && gunicorn wsgi:application --bind 0.0.0.0:$PORT --workers 3 --timeout 120 --log-level info
+web: DJANGO_SETTINGS_MODULE=commerce.settings python manage.py migrate --noinput && DJANGO_SETTINGS_MODULE=commerce.settings python manage.py collectstatic --noinput && gunicorn wsgi:application --bind 0.0.0.0:$PORT --workers 3 --timeout 120

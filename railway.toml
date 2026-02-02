@@ -1,0 +1,7 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "python commerce/manage.py collectstatic --noinput && python commerce/manage.py migrate && gunicorn --pythonpath commerce commerce.wsgi"
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 10

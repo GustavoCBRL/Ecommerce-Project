@@ -1,0 +1,1 @@
+web: gunicorn --pythonpath commerce commerce.wsgi --log-file -

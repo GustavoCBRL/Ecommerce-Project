@@ -1,0 +1,10 @@
+# Configuração do Railway - Cole estas variáveis no painel do Railway
+
+SECRET_KEY=your-secret-key-here-change-this
+DEBUG=False
+ALLOWED_HOSTS=*.railway.app
+
+# IMPORTANTE:
+# 1. Substitua 'your-secret-key-here-change-this' por uma chave secreta forte
+# 2. O Railway configurará automaticamente DATABASE_URL quando você adicionar PostgreSQL
+# 3. Adicione outras variáveis conforme necessário para seu projeto

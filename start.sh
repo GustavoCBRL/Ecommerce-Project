@@ -5,8 +5,28 @@ set -e
 
 echo "🚀 Starting Railway deployment..."
 
-# Navigate to the Django project directory
-cd commerce
+# Get the current directory and find the Django project
+CURRENT_DIR=$(pwd)
+echo "📁 Current directory: $CURRENT_DIR"
+
+# Check if we're in the right directory structure
+if [ -f "commerce/manage.py" ]; then
+    echo "✅ Found manage.py in commerce/ subdirectory"
+    cd commerce
+elif [ -f "manage.py" ]; then
+    echo "✅ Found manage.py in current directory"
+else
+    echo "❌ Cannot find manage.py. Directory structure:"
+    ls -la
+    if [ -d "commerce" ]; then
+        echo "Contents of commerce directory:"
+        ls -la commerce/
+    fi
+    exit 1
+fi
+
+DJANGO_DIR=$(pwd)
+echo "📁 Django project directory: $DJANGO_DIR"
 
 echo "📦 Collecting static files..."
 python manage.py collectstatic --noinput --clear

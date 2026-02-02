@@ -6,6 +6,9 @@ DEBUG=False
 # Para Railway, use * para permitir todos os hosts
 ALLOWED_HOSTS=*
 
+# URL pública do Railway (opcional - será detectada automaticamente)
+RAILWAY_PUBLIC_URL=https://your-app-name.up.railway.app
+
 # Configurações do Gunicorn
 WEB_CONCURRENCY=3
 TIMEOUT=120
@@ -16,4 +19,5 @@ LOG_LEVEL=info
 # 1. Substitua 'your-secret-key-here-change-this' por uma chave secreta forte
 # 2. O Railway configurará automaticamente DATABASE_URL quando você adicionar PostgreSQL
 # 3. O PORT é configurado automaticamente pelo Railway
-# 4. Se o erro persistir, tente definir DEBUG=True temporariamente para ver os logs
+# 4. RAILWAY_PUBLIC_URL é opcional - o Django detecta automaticamente domínios *.railway.app
+# 5. Se o erro CSRF persistir, tente definir DEBUG=True temporariamente para ver os logs

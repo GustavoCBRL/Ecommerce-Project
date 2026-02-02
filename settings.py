@@ -50,6 +50,25 @@ elif os.getenv('ALLOWED_HOSTS'):
 if DEBUG:
     ALLOWED_HOSTS.extend(['localhost', '127.0.0.1'])
 
+# CSRF trusted origins for Railway
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.railway.app',
+    'https://web-production-69983.up.railway.app',  # Specific Railway domain
+]
+
+# Add any Railway domain dynamically
+railway_url = os.getenv('RAILWAY_PUBLIC_URL', '')
+if railway_url and railway_url not in CSRF_TRUSTED_ORIGINS:
+    CSRF_TRUSTED_ORIGINS.append(railway_url)
+
+# Add custom domain if provided
+if RAILWAY_PUBLIC_DOMAIN:
+    CSRF_TRUSTED_ORIGINS.append(f'https://{RAILWAY_PUBLIC_DOMAIN}')
+
+# Add localhost for development
+if DEBUG:
+    CSRF_TRUSTED_ORIGINS.extend(['http://localhost:8000', 'http://127.0.0.1:8000'])
+
 # Application definition
 INSTALLED_APPS = [
     'auctions',
@@ -160,6 +179,11 @@ MEDIA_ROOT = BASE_DIR / 'media'
 if not DEBUG:
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
+    # Additional CSRF settings for Railway
+    CSRF_COOKIE_SECURE = False  # Set to False for Railway compatibility
+    SESSION_COOKIE_SECURE = False  # Set to False for Railway compatibility
+    CSRF_COOKIE_SAMESITE = 'Lax'  # Less restrictive for Railway
+    SESSION_COOKIE_SAMESITE = 'Lax'  # Less restrictive for Railway
 
 # Debug information
 print(f"🐍 Python version: {sys.version}")
